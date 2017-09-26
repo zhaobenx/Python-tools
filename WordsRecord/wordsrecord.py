@@ -29,6 +29,7 @@ class WordsRecord:
         except:
             print('error')
         else:
+            print("\a",end="")
             with open("words.txt", 'a', encoding='utf8') as f:
                 f.write("- " + new)
                 meanings, ipa = self.search_meaning(new)
@@ -36,11 +37,13 @@ class WordsRecord:
                     f.write(":\n")
                 else:
                     f.write("\n")
+                if ipa:
+                    f.write("  - [" + ipa + "]\n")
+                    
                 if meanings:
                     for meaning in meanings.splitlines():
                         f.write("  - " + meaning + "\n")
-                if ipa:
-                    f.write("  - [" + ipa + "]\n")
+
                 print(new)
                 # print(self.search_meaning(new))
         # self.root.clipboard_clear()
