@@ -13,7 +13,7 @@ For each tools, if there exist `requirement.txt`, use `pip install -r requiremen
 
     Download Xiami music.
 
--   ### [WordsRecord](WordsRecord/)
+-   ## [WordsRecord](WordsRecord/)
 
     Record the words when press F9, so you can check it later.
 
