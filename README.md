@@ -23,3 +23,6 @@ For each tools, if there exist `requirement.txt`, use `pip install -r requiremen
     >
     >   keyboard module is needed.
 
+-   ## [AlphaHide](AlphaHide/)
+
+    Use alpha chanel to hide one picture from another.
