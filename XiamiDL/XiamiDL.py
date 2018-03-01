@@ -153,8 +153,12 @@ if __name__ == '__main__':
 
     if not os.path.exists('mp3'):
         os.makedirs('mp3')
+
+    song = input("Please input the song name:\n")
     while 1:
-        song = input("Please input the song name:\n")
+        if not song:
+            song = input("Please input the song name:\n")
+            continue
         song_list = search(song)
 
         term_list = ['Song name', 'Artist name', 'Album name']
@@ -164,7 +168,11 @@ if __name__ == '__main__':
             print(row_format.format(
                 colored('[' + str(index + 1) + ']'), *song[:-1]), sep='\t')
 
-        number = input("Please input the index of the song, e.g. 1:\n")
+        number = input(
+            "Please input the index of the song, e.g. 1, q for quit:\n")
+        if number.lower() == 'q':
+            song = ""
+            continue
         while 1:
             try:
                 number = int(number) - 1
@@ -179,3 +187,5 @@ if __name__ == '__main__':
         command = input("Enter q to quit, else continue to download:")
         if command.lower() == 'q':
             exit(0)
+        else:
+            song = command
