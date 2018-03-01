@@ -26,3 +26,14 @@ For each tools, if there exist `requirement.txt`, use `pip install -r requiremen
 -   ## [AlphaHide](AlphaHide/)
 
     Use alpha chanel to hide one picture from another.
+
+-   ## [HappyNewYear](HappyNewYear/)
+
+    Automatic send happy new year message to WeChat friends.
+
+    Usage:
+
+    1.  `HappyNewYear.py list` to generate a `friends.json` file, so you can edit different message and delete people that you don't want to send to.
+    2.  `HappyNewYear.py list` to send message according to the `friends.json`.
+
+    ​
