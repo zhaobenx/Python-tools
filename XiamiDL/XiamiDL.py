@@ -181,6 +181,8 @@ if __name__ == '__main__':
             except Exception as e:
                 print(e)
                 number = input("Please input the index of the song:\n")
+                if number.lower() == 'q':
+                    break
             else:
                 break
 
