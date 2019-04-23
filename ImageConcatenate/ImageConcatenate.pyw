@@ -5,6 +5,7 @@ Created on 2019-04-22 22:32:32
 @Version : 0.0.1
 """
 import os
+import sys
 
 import PySimpleGUI as sg
 from PIL import Image
@@ -79,7 +80,7 @@ def main():
         _, files = window.Read()
         if _ == 'Cancel' or _ is None:
             window.Close()
-            exit(0)
+            sys.exit(0)
 
         if not files[0]:
             sg.Popup("Please select image")
