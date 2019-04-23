@@ -9,7 +9,7 @@ For each tools, if there exist `requirement.txt`, use `pip install -r requiremen
 
 # List
 
--   ## [XiamiDL](XiamiDL/)
+-   ## [XiamiDL](XiamiDL/) (Not work anymore)
 
     Download Xiami music.
 
@@ -36,4 +36,7 @@ For each tools, if there exist `requirement.txt`, use `pip install -r requiremen
     1.  `HappyNewYear.py list` to generate a `friends.json` file, so you can edit different message and delete people that you don't want to send to.
     2.  `HappyNewYear.py send` to send message according to the `friends.json`.
 
-    ​
+- ## [ImageConcatenate](ImageConcatenate/)
+
+  Concatenate multiple image into a long picture. With GUI.
+
