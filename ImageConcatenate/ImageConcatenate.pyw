@@ -24,6 +24,11 @@ try:
 except Exception as e:
     log(f"Import error {e}")
 
+try:
+   wd = sys._MEIPASS
+except AttributeError:
+   wd = os.getcwd()
+icon_file = os.path.join(wd,'resource/icon.ico')
 
 def concatenate_image(image_list, output_name, progress_bar_callback=None, progress_text_callback=None):
     def update_text(text):
@@ -92,7 +97,7 @@ def main():
                   sg.Cancel(),
               ]]
 
-    window = sg.Window('Image concatenate',icon='resource/icon.ico').Layout(layout)
+    window = sg.Window('Image concatenate',icon=icon_file).Layout(layout)
 
     while True:
         _, files = window.Read()
