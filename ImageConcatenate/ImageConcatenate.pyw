@@ -92,7 +92,7 @@ def main():
                   sg.Cancel(),
               ]]
 
-    window = sg.Window('Image concatenate').Layout(layout)
+    window = sg.Window('Image concatenate',icon='resource/icon.ico').Layout(layout)
 
     while True:
         _, files = window.Read()
