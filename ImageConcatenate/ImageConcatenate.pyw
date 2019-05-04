@@ -6,9 +6,23 @@ Created on 2019-04-22 22:32:32
 """
 import os
 import sys
+import logging
+
+if os.environ.get('debug'):
+    logging.basicConfig(filename='debug.log', filemode='a', format='%(asctime)s - %(levelname)s - %(message)s',level=logging.DEBUG)
+
+def log(text):
+    logging.info(text)
+
 
 import PySimpleGUI as sg
 from PIL import Image
+
+try:
+    import distutils
+    log("Import distutils success")
+except Exception as e:
+    log(f"Import error {e}")
 
 
 def concatenate_image(image_list, output_name, progress_bar_callback=None, progress_text_callback=None):
@@ -28,10 +42,12 @@ def concatenate_image(image_list, output_name, progress_bar_callback=None, progr
 
         except Exception as e:
             update_text(f"Failed on reading {i}: {e}")
+            log(f"Failed on reading {i}: {e}")
         else:
             images.append(image)
             image_names.append(os.path.basename(i))
             update_text(f"Open image {i}")
+            log(f"Open image {i}")
 
     image_number = len(images)
     if image_number == 0:
@@ -56,10 +72,12 @@ def concatenate_image(image_list, output_name, progress_bar_callback=None, progr
         length_i += h_
 
     update_text('Saving')
+    log("Stitch done")
     result.save(output_name)
 
 
 def main():
+    log("program starts")
     layout = [[sg.Text('Select photos to concatenate')],
               [
                   sg.Text('Source images'),
@@ -79,15 +97,19 @@ def main():
     while True:
         _, files = window.Read()
         if _ == 'Cancel' or _ is None:
+            log("Cancel")
             window.Close()
             sys.exit(0)
 
         if not files[0]:
+            log("No file")
             sg.Popup("Please select image")
             continue
 
         source_images = files[0].split(';')
         output_image = files[1]
+        log(f"Source images: {source_images}")
+        log(f"Output images: {output_image}")
         print(source_images, output_image)
         concatenate_image(source_images, output_image,
                           window.FindElement('progbar').UpdateBar,
