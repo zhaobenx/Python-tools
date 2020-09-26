@@ -39,4 +39,17 @@ For each tools, if there exist `requirement.txt`, use `pip install -r requiremen
 - ## [ImageConcatenate](ImageConcatenate/)
 
   Concatenate multiple image into a long picture. With GUI.
+  
+- ## [FocalLengthAnalyse](FocalLengthAnalyse/)
+  
+  Analyse focal lengths of photos using `exifread` and GUI with `PySimpleGUI` .
+  
+- ## [NeteaseDecode](NeteaseDecode/)
 
+  Decode Netease’s cache file to mp3.
+
+- ## [MouseUtil](MouseUtil/)
+
+  ### AutoClick
+
+  Press mouse key 3 and key 4 to simulate continuously click of left key, with different frequency.
