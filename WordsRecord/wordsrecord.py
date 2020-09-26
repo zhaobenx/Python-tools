@@ -15,10 +15,10 @@ class WordsRecord:
         self.root = Tk()
         self.root.withdraw()
         #keyboard.add_hotkey('alt+r', self.read_clip, trigger_on_release=True)
-        keyboard.hook_key('f9', self.read_clip)
+        keyboard.on_press_key('f9', self.read_clip)
         self.root.mainloop()
 
-    def read_clip(self):
+    def read_clip(self, *args):
         # self.root.clipboard_clear()
         time.sleep(0.3)
         keyboard.send('ctrl+c')
@@ -53,7 +53,8 @@ class WordsRecord:
 
         # TODO：Add IPA and meaning
         # use this api：
-        url = "http://dict.youdao.com/jsonapi?xmlVersion=5.1&client=&q={0}&dicts={{\"count\":1,\"dicts\":[[\"ec\",\"simple\"]]}}"
+        # url = "http://dict.youdao.com/jsonapi?xmlVersion=5.1&client=&q={0}&dicts={{\"count\":1,\"dicts\":[[\"ec\",\"simple\"]]}}"
+        url = "http://dict.youdao.com/jsonapi?xmlVersion=5.1&client=&q={0}"
 
         # url = 'http://dict.youdao.com/suggest?q={}&num=1&doctype=json'
         # print(url.format(words))
