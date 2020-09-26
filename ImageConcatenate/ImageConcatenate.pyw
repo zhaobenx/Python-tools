@@ -79,6 +79,7 @@ def concatenate_image(image_list, output_name, progress_bar_callback=None, progr
     update_text('Saving')
     log("Stitch done")
     result.save(output_name)
+    update_text('Done')
 
 
 def main():
