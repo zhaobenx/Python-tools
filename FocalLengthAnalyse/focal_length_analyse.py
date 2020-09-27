@@ -2,7 +2,7 @@
 """
 Created on 2020-09-26 13:26:26
 @Author: ZHAO Lingfeng
-@Version : 0.0.1
+@Version : 0.0.2
 """
 
 import os
@@ -11,7 +11,7 @@ from collections import defaultdict
 import PySimpleGUI as sg
 import exifread
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 
 SIZE_X = 200
 SIZE_Y = 100
@@ -39,7 +39,7 @@ layout = [[
     sg.Column(image_viewer_column),
 ]]
 
-window = sg.Window(f'Focal Length Analyser - v{VERSION}', layout)
+window = sg.Window(f'Focal Length Analyser - by zhaobenx v{VERSION}', layout)
 
 while True:
     event, values = window.read()
@@ -59,14 +59,16 @@ while True:
         focal_length = defaultdict(int)
         i = 0
         for filename in fnames:
-            i += 1
-            if not sg.one_line_progress_meter('Calculating', i, len(fnames), orientation='h'):
-                break
             with open(filename, 'rb') as f:
                 tags = exifread.process_file(f)
                 focal_length[tags['EXIF FocalLength'].values[0].num] += 1
+            i += 1
+            if not sg.one_line_progress_meter('Calculating', 1, len(fnames), orientation='h'):
+                break
+        if not focal_length:
+            graph.erase()
+            continue
 
-        # print(focal_length, max(focal_length))
         max_count = max(focal_length.values())
         max_focal_length = int(max(focal_length)) + 1
         min_focal_length = int(min(focal_length))
