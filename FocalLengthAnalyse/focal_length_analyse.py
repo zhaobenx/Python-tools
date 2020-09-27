@@ -2,7 +2,7 @@
 """
 Created on 2020-09-26 13:26:26
 @Author: ZHAO Lingfeng
-@Version : 0.0.2
+@Version : 0.0.3
 """
 
 import os
@@ -11,7 +11,7 @@ from collections import defaultdict
 import PySimpleGUI as sg
 import exifread
 
-VERSION = '0.0.2'
+VERSION = '0.0.3'
 
 SIZE_X = 200
 SIZE_Y = 100
@@ -51,7 +51,7 @@ while True:
 
         for path, subdirs, files in os.walk(folder):
             for name in files:
-                if name.lower().endswith((".png", ".jpg")):
+                if name.lower().endswith((".png", ".jpg",".cr2")):
                     fnames.append(os.path.join(path, name))
 
         window["-FILE LIST-"].update(fnames)
@@ -63,8 +63,9 @@ while True:
                 tags = exifread.process_file(f)
                 focal_length[tags['EXIF FocalLength'].values[0].num] += 1
             i += 1
-            if not sg.one_line_progress_meter('Calculating', 1, len(fnames), orientation='h'):
+            if not sg.one_line_progress_meter('Calculating', i, len(fnames), orientation='h'):
                 break
+
         if not focal_length:
             graph.erase()
             continue
